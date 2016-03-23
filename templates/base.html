@@ -4,7 +4,7 @@
 <link rel="shortcut icon" href="{{ url_for('static',filename='fav.png')}}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static',filename='fav.png')}}" type="image/x-icon">
 {% endblock %}
- {% block title %}Flasky{% endblock %}
+{% block title %}Flasky{% endblock %}
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
@@ -29,6 +29,12 @@
 
 {% block content %}
 <div class="container">
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">X</button>
+            {{ message }}
+        </div>
+    {% endfor %}
     {% block page_content %}{% endblock %}
 </div>
 {% endblock %}
